@@ -91,7 +91,12 @@ php artisan serve
 
 #### 前台
 访问 http://115.28.40.237/
+```
+体验用户 账号eden 密码123456 请尽量不要更改线上数据哈
+```
+
 目前项目暂时部署在阿里云上
+
 前台主要使用bootstrap+flatui构建
 ![](http://i13.tietuku.com/d259da2c268ddd85.png)
 
