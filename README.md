@@ -138,7 +138,7 @@ https://github.com/summerblue/phphub （phphub网站的源码）
 
 https://github.com/douyasi/yascmf
 
-https://github.com/BootstrapCMS （代码规范，推荐阅读）
+https://github.com/BootstrapCMS/CMS （代码规范，推荐阅读）
 
 本项目使用的部分composer包：
 
