@@ -103,7 +103,7 @@ php artisan serve
 #### 后台
 访问 http://115.28.40.237/admin
 ```
-初始管理员 账号admin 密码123456
+初始管理员 账号admin 密码123456 请尽量不要更改线上数据哈
 ```
 后台ui采用的是AmazeUI
 ![](http://i13.tietuku.com/c156f5744143186d.png)
