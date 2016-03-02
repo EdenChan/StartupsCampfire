@@ -127,28 +127,34 @@ php artisan serve
 另外由于项目时间等等问题，本来考虑使用vuejs完成部分前端内容，但最终还是保持最简单的前端写法，后续会考虑引入一些新的前端技术和利用ajax等方式优化一下前端部分的交互。
 
 ### 项目参考
-本项目在实现过程中参考了目前基于laravel的部分项目源码
-主要项目有
+本项目在实现过程中参考了目前基于laravel的部分项目源码，主要项目有：
+
 https://github.com/summerblue/phphub （phphub网站的源码）
+
 https://github.com/douyasi/yascmf
+
 https://github.com/BootstrapCMS （代码规范，推荐阅读）
 
-本项目使用的部分composer包
+本项目使用的部分composer包：
+
 https://github.com/lazychaser/laravel-nestedset 
 (处理树形结构数据：如无限级分类、导航等)
+
 https://github.com/Sarav-S/Laravel-Multiauth 
 (用户分表验证，可将不同角色用户存到不同的user表中 ，分别进行管理)
+
 https://github.com/andersao/l5-repository
 (用于Laravel5的Repository抽象包，支持实现Repository层逻辑)
+
 https://github.com/stevenyangecho/laravel-u-editor
 (百度ueditor富文本编辑器，
 如果遇到无法上传图片的问题可以参考这个issue:
 https://github.com/stevenyangecho/laravel-u-editor/issues/6)
 
 ###一些题外话
-很早之前就听说了Laravel的大名，最近有空的时候学习了一下这个框架的一些基本用法，利用空余时间断断续续地做了一个月多点的时间，基本把这个项目做成了现在这个样子，和之前接触的一些框架（tp、ci等等）相比，laravel无疑在构建一个更规范的工作流方面做得更加出色，
+很早之前就听说了Laravel的大名，最近有空的时候学习了一下这个框架的一些基本用法，利用空余时间断断续续地做了一个月多点的时间，基本把这个项目做成了现在这个样子，主要定位于给Laravel的初学者提供一些使用框架的思路。
 
-composer支持、好用的Eloquent ORM、好用的Blade模板、好用的Restful路由、方便的Form Request..这些都能减少开发过程中的很多思考时间，使开发者更专注于项目功能的实现。
+和之前接触的一些框架（tp、ci等等）相比，laravel无疑在构建一个更规范的工作流方面做得更加出色，composer支持、好用的Eloquent ORM、好用的Blade模板、好用的Restful路由、方便的Form Request..这些都能减少开发过程中的很多思考时间，使开发者更专注于项目功能的实现。
 
 当然由于我自己的各种经验欠缺问题（今年应届），在这个项目许多实现上还是非常simple和naive的，接下来的时间还是需要更多的思考如何能够更好地解决部件解耦、减少重复和提高代码质量等问题，希望能够和大家交流，向大家好好学习:)
 
