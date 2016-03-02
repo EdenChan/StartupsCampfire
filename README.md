@@ -93,20 +93,20 @@ php artisan serve
 访问 http://115.28.40.237/
 目前项目暂时部署在阿里云上
 前台主要使用bootstrap+flatui构建
-![](image/56d67c99501fe.png)
+![](http://i13.tietuku.com/d259da2c268ddd85.png)
 
-![](image/56d67cfbdda4b.png)
+![](http://i13.tietuku.com/068c80fc9fc759ff.png)
 
-![](image/56d67d584df2e.png)
+![](http://i13.tietuku.com/9117cd456c445d86.png)
 
-![](image/56d67dce760e3.png)
+![](http://i13.tietuku.com/00aebb4f31f48e43.png)
 #### 后台
 访问 http://115.28.40.237/admin
 ```
 初始管理员 账号admin 密码123456
 ```
 后台ui采用的是AmazeUI
-![](image/56d67e185eb80.png)
+![](http://i13.tietuku.com/c156f5744143186d.png)
 
 ### 本项目实现的主要功能
 1)**前后台分离用户验证**
@@ -147,7 +147,9 @@ https://github.com/stevenyangecho/laravel-u-editor/issues/6)
 
 ###一些题外话
 很早之前就听说了Laravel的大名，最近有空的时候学习了一下这个框架的一些基本用法，利用空余时间断断续续地做了一个月多点的时间，基本把这个项目做成了现在这个样子，和之前接触的一些框架（tp、ci等等）相比，laravel无疑在构建一个更规范的工作流方面做得更加出色，
+
 composer支持、好用的Eloquent ORM、好用的Blade模板、好用的Restful路由、方便的Form Request..这些都能减少开发过程中的很多思考时间，使开发者更专注于项目功能的实现。
+
 当然由于我自己的各种经验欠缺问题（今年应届），在这个项目许多实现上还是非常simple和naive的，接下来的时间还是需要更多的思考如何能够更好地解决部件解耦、减少重复和提高代码质量等问题，希望能够和大家交流，向大家好好学习:)
 
 ###联系作者
