@@ -1,0 +1,20 @@
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+
+# IDE Files
+#-------------------------
+/nbproject/
+/.idea
+
+# Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+.phpintel/*
+
+_ide_helper.php

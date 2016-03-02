@@ -1,0 +1,1 @@
+请点击该链接进行密码重置: {{ route('frontend::get_reset_password', ['token' => $token]) }} --来自StartupsCampfire

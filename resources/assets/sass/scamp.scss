@@ -1,0 +1,274 @@
+$primary-font: "Microsoft YaHei";
+$white: #fff;
+$gray: #ddd;
+$background-all: #f7f7f7;
+$flatty-color: #18bc9c;
+
+@mixin scale_animation {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+  opacity: .8;
+}
+
+@mixin default_transition {
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
+}
+
+@mixin default_radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+html {
+  height: 100%;
+  background: $background-all;
+  font-family: $primary-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $primary-font;
+}
+
+body {
+  @extend html;
+  padding-top: 50px;
+}
+
+hr {
+  border-top: 1px solid $gray;
+}
+
+.empty-row {
+  height: 20px;
+}
+
+.box {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 0 20px;
+  border-radius: 3px;
+  box-shadow: 0 .2em 0 0 #ddd,0 0 0 1px #ddd;
+}
+
+.event-box {
+  padding: 12px;
+  background: $white;
+  margin: 5px -10px;
+  border: 1px solid $gray;
+}
+
+.hot-posts-box {
+  border-bottom: 1px solid $gray;
+  padding: 10px 15px;
+}
+
+.event-sub-box {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  max-width: 650px;
+  img {
+    @include default_transition;
+  }
+  .event-caption {
+    @include default_transition;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: $white;
+    opacity: 0;
+    background: $flatty-color;
+    .event-caption-content {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      transform: translateY(-50%);
+      hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 60%;
+      }
+      .event-time,
+      .event-location {
+        padding: 0 15px;
+      }
+      .event-time {
+        font-size: 14px;
+      }
+      .event-location {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+  &:hover img, &:hover .event-caption {
+    @include scale_animation;
+  }
+}
+
+.post-body {
+  .event-cover {
+    .event-cover-img {
+      padding-left: 0;
+      padding-right: 0;
+      @include default_transition;
+      &:hover {
+        @include scale_animation;
+      }
+    }
+    text-align: center;
+    hr {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 60%;
+    }
+    .event-time,
+    .event-brief,
+    .event-location {
+      padding: 0 15px;
+    }
+    .event-time {
+      font-size: 14px;
+    }
+    .event-location {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .event-brief {
+      text-align: left;
+    }
+  }
+  .event-content {
+    img {
+      max-width: 100%;
+    }
+    p img {
+      @extend img;
+    }
+  }
+  .post-content {
+    @extend .event-content;
+  }
+}
+
+.user-avatar {
+  margin: 4px auto;
+  width: 230px;
+  height: 230px;
+  @include default_radius;
+}
+
+.user-profile {
+  margin-top: 30px;
+}
+
+.user-friends-count {
+  display: table;
+  margin: 20px auto;
+  li {
+    position: relative;
+    display: table-cell;
+    color: #b1b1b1;
+    font-size: 12px;
+    padding: 0 20px;
+    span {
+      display: block;
+      font-size: 23px;
+      color: #646565;
+    }
+    &:last-child:after {
+      display: block;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: 1px;
+      background: #dddddd;
+    }
+  }
+}
+
+.user-avatar-list {
+  padding-top: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  float: left;
+  .user-avatar-list-name {
+    margin-top: 2px;
+  }
+  .user-avatar-list-img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+header.carousel {
+  height: 60%;
+  .item, .item .active, .carousel-inner {
+    height: 100%;
+  }
+  .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.white-box {
+  padding: 10px;
+  background: $white;
+  border: 1px solid $gray;
+}
+
+.meta {
+  color: #b1b1b1;
+  font-size: 12px;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+  font-size: 20px;
+}
+
+/* Footer Styles */
+
+footer {
+  margin: 50px 0;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 991px) {
+  .customer-img,
+  .img-related {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .img-portfolio {
+    margin-bottom: 15px;
+  }
+
+  header.carousel .carousel {
+    height: 70%;
+  }
+}
+
+.comment-box {
+  font-size: 14px;
+  border-bottom: 1px $gray solid;
+}

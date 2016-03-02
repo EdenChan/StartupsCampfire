@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: StartupsCampfire
+        psr4_prefix: StartupsCampfire
+        src_path: app
