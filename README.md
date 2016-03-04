@@ -44,13 +44,6 @@ MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 ```
-然后运行命令
-```
-php artisan key:generate
-```
-
-设定laravel应用所需的key
-
 之后执行
 ```
 composer install
@@ -58,6 +51,13 @@ composer install
 这条命令将安装项目的composer依赖，为提升composer包安装速度建议使用composer中国全量镜像，
 
 相关信息如下：http://pkg.phpcomposer.com/
+
+然后运行命令
+```
+php artisan key:generate
+```
+
+设定laravel应用所需的key
 
 上述命令执行完成后,
 请在`StartupsCampfire`文件夹中使用命令
