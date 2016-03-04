@@ -27,7 +27,7 @@ APP_DEBUG=true
 APP_KEY=SomeRandomString
 
 DB_HOST=localhost
-DB_DATABASE=startupscampfire
+DB_DATABASE=startupscampfire(请先建立数据库`startupscampfire`)
 DB_USERNAME=root
 DB_PASSWORD=root
 DB_PREFIX=scamp_(如果通过sql导入方式建立数据库请勿更改表前缀)
