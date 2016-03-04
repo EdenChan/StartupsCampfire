@@ -10,6 +10,7 @@ git clone https://github.com/EdenChan/StartupsCampfire.git
 ```
 
 2) 安装composer依赖
+
 在clone下来的`StartupsCampfire`文件夹中运行命令
 
 ```
