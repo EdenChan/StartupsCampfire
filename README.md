@@ -11,20 +11,14 @@ git clone https://github.com/EdenChan/StartupsCampfire.git
 
 2) 安装composer依赖
 在clone下来的`StartupsCampfire`文件夹中运行命令
-```
-composer install
-```
-为提升composer包安装速度建议使用composer中国全量镜像，相关信息如下：
-http://pkg.phpcomposer.com/
 
-上述命令执行完成后,
-请在`StartupsCampfire`文件夹中使用命令
 ```
 cp .env.example .env
 ```
 创建项目.env文件（如果处于windows环境下可利用git bash执行上述命令）
 
 随后编辑.env文件进行环境配置
+
 示例结果如下
 ```
 APP_ENV=local
@@ -53,9 +47,20 @@ MAIL_ENCRYPTION=null
 ```
 php artisan key:generate
 ```
+
 设定laravel应用所需的key
 
-运行
+之后执行
+```
+composer install
+```
+这条命令将安装项目的composer依赖，为提升composer包安装速度建议使用composer中国全量镜像，
+
+相关信息如下：http://pkg.phpcomposer.com/
+
+上述命令执行完成后,
+请在`StartupsCampfire`文件夹中使用命令
+
 ```
 php artisan vendor:publish
 ```
