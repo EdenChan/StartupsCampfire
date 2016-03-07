@@ -104,20 +104,20 @@ php artisan serve
 目前项目暂时部署在阿里云上
 
 前台主要使用bootstrap+flatui构建
-![](http://i13.tietuku.com/d259da2c268ddd85.png)
+![](http://7xrmnk.com1.z0.glb.clouddn.com/d259da2c268ddd85.png)
 
-![](http://i13.tietuku.com/068c80fc9fc759ff.png)
+![](http://7xrmnk.com1.z0.glb.clouddn.com/9117cd456c445d86.png)
 
-![](http://i13.tietuku.com/9117cd456c445d86.png)
+![](http://7xrmnk.com1.z0.glb.clouddn.com/068c80fc9fc759ff.png)
 
-![](http://i13.tietuku.com/00aebb4f31f48e43.png)
+![](http://7xrmnk.com1.z0.glb.clouddn.com/00aebb4f31f48e43.png)
 #### 后台
 访问 http://115.28.40.237/admin
 ```
 初始管理员 账号admin 密码123456 请尽量不要更改线上数据哈
 ```
 后台ui采用的是AmazeUI
-![](http://i13.tietuku.com/c156f5744143186d.png)
+![](http://7xrmnk.com1.z0.glb.clouddn.com/c156f5744143186d.png)
 
 ### 本项目实现的主要功能
 1)**前后台分离用户验证**
