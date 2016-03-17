@@ -22,7 +22,6 @@ class CreateNavigationRequest extends Request
     public function rules()
     {
         return [
-            'parent_id' => 'required',
             'name'      => 'required',
             'url'       => 'required',
         ];
@@ -31,7 +30,6 @@ class CreateNavigationRequest extends Request
     public function messages()
     {
         return [
-            'parent_id.required' => '上级导航不能为空~',
             'name.required'      => '导航内容不能为空~',
             'url.required'       => '导航链接不能为空~',
         ];
