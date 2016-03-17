@@ -22,7 +22,6 @@ class CreateCategoryRequest extends Request
     public function rules()
     {
         return [
-            'parent_id' => 'required',
             'content'   => 'required',
         ];
     }
@@ -30,7 +29,6 @@ class CreateCategoryRequest extends Request
     public function messages()
     {
         return [
-            'parent_id.required' => '上级分类不能为空~',
             'content.required'   => '分类名称不能为空~',
         ];
     }
