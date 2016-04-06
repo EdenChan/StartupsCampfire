@@ -3,7 +3,6 @@
 namespace StartupsCampfire\Composers;
 
 use Illuminate\Contracts\View\View;
-use StartupsCampfire\Repositories\NavigationRepository;
 
 /**
  * 站点导航视图组件
@@ -13,13 +12,6 @@ use StartupsCampfire\Repositories\NavigationRepository;
  */
 class NavigationComposer
 {
-    protected $navigationRepository;
-
-    public function __construct(NavigationRepository $navigationRepository)
-    {
-        $this->navigationRepository = $navigationRepository;
-    }
-
     /**
      * Bind data to the view.
      *
@@ -28,7 +20,7 @@ class NavigationComposer
      */
     public function compose(View $view)
     {
-        $navigation_tree = $this->navigationRepository->getNodesTree('navigation_tree');
+        $navigation_tree = \NavigationRepository::getNodesTree('navigation_tree');
         $view->with('navigation_tree', $navigation_tree);
     }
 }

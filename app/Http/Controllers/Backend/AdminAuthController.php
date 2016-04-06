@@ -3,7 +3,7 @@
 namespace StartupsCampfire\Http\Controllers\Backend;
 
 use StartupsCampfire\Components\AuthComponent;
-use StartupsCampfire\Repositories\AdminRepository;
+use StartupsCampfire\Repositories\AdminRepositoryInterface;
 
 class AdminAuthController extends AdminCommonController
 {
@@ -28,7 +28,7 @@ class AdminAuthController extends AdminCommonController
      *
      * @return void
      */
-    public function __construct(AdminRepository $adminRepository)
+    public function __construct(AdminRepositoryInterface $adminRepository)
     {
         // 中间件设置
         $this->middleware('admin.guest', ['except' => ['getLogout']]);

@@ -7,25 +7,20 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use StartupsCampfire\Helpers\ViewHelper;
 use StartupsCampfire\Http\Requests\CreateEventRequest;
-use StartupsCampfire\Repositories\EventRepository;
 
 class EventController extends CommonController
 {
-    protected $eventRepository;
-
-    public function __construct(EventRepository $eventRepository)
+    public function __construct()
     {
         // 中间件设置
         $this->middleware('auth', ['only' => ['create', 'store', 'destroy', 'getUpvoteEvent', 'getDownvoteEvent']]);
-
-        $this->eventRepository = $eventRepository;
     }
 
     public function index()
     {
         $filter = Input::get('filter');
 
-        $events = $this->eventRepository->getPaginatedEvents(10, $filter);
+        $events = \EventRepository::getPaginatedEvents(10, $filter);
 
         return ViewHelper::frontView('events.index', compact('events'));
     }
@@ -38,8 +33,8 @@ class EventController extends CommonController
      */
     public function show($event_id)
     {
-        $event = $this->eventRepository->find($event_id);
-        $hot_events = $this->eventRepository->getHotEvents(10);
+        $event = \EventRepository::find($event_id);
+        $hot_events = \EventRepository::getHotEvents(10);
 
         return ViewHelper::frontView('events.show', compact('event', 'hot_events'));
     }
@@ -60,7 +55,7 @@ class EventController extends CommonController
         $input = $request->all();
         $input['user_id'] = Auth::id('user');
 
-        $this->eventRepository->createUserEvent($input);
+        \EventRepository::createUserEvent($input);
 
         return Redirect::route('frontend::user.authprofile');
     }
@@ -73,11 +68,11 @@ class EventController extends CommonController
      */
     public function destroy($event_id)
     {
-        $event = $this->eventRepository->find($event_id);
+        $event = \EventRepository::find($event_id);
 
         $this->authorize('destroy', $event);
 
-        $this->eventRepository->deleteUserEvent($event_id);
+        \EventRepository::deleteUserEvent($event_id);
 
         return Redirect::route('frontend::user.events', ['user_id' => Auth::id('user')]);
     }
@@ -91,7 +86,7 @@ class EventController extends CommonController
     {
         $user_id = Auth::id('user');
         $user_name = Auth::user('user')->name;
-        $events = $this->eventRepository->getPaginatedUserModels($user_id, 10);
+        $events = \EventRepository::getPaginatedUserModels($user_id, 10);
 
         return ViewHelper::frontView('events.index', compact('user_name', 'events'));
     }
@@ -104,7 +99,7 @@ class EventController extends CommonController
      */
     public function getUpvoteEvent($event_id)
     {
-        $this->eventRepository->upvoteModel($event_id);
+        \EventRepository::upvoteModel($event_id);
 
         return Redirect::back();
     }
@@ -117,7 +112,7 @@ class EventController extends CommonController
      */
     public function getDownvoteEvent($event_id)
     {
-        $this->eventRepository->downvoteModel($event_id);
+        \EventRepository::downvoteModel($event_id);
 
         return Redirect::back();
     }

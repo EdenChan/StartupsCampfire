@@ -4,7 +4,7 @@ namespace StartupsCampfire\Http\Controllers\Frontend;
 
 use Illuminate\Support\Facades\Auth;
 use StartupsCampfire\Components\AuthComponent;
-use StartupsCampfire\Repositories\UserRepository;
+use StartupsCampfire\Repositories\UserRepositoryInterface;
 
 class AuthController extends CommonController
 {
@@ -29,7 +29,7 @@ class AuthController extends CommonController
      *
      * @return void
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         // 中间件设置
         $this->middleware('guest', ['except' => ['getLogout']]);

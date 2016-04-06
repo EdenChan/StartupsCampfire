@@ -6,17 +6,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use StartupsCampfire\Http\Requests;
-use StartupsCampfire\Repositories\FavoriteRepository;
-use StartupsCampfire\Repositories\PostRepository;
 use StartupsCampfire\Helpers\ViewHelper;
 use StartupsCampfire\Http\Requests\CreatePostRequest;
 
 class PostController extends CommonController
 {
-    protected $postRepository;
-    protected $favoriteRepository;
 
-    public function __construct(PostRepository $postRepository, FavoriteRepository $favoriteRepository)
+    public function __construct()
     {
         // 中间件设置
         $this->middleware('auth', ['only' => [
@@ -26,9 +22,6 @@ class PostController extends CommonController
             'getUpvotePost',
             'getDownvotePost'
         ]]);
-
-        $this->postRepository = $postRepository;
-        $this->favoriteRepository = $favoriteRepository;
     }
 
     /**
@@ -40,9 +33,9 @@ class PostController extends CommonController
     {
         $filter = Input::get('filter');
 
-        $posts = $this->postRepository->getPaginatedModels(10, $filter);
+        $posts = \PostRepository::getPaginatedModels(10, $filter);
 
-        $hot_posts = $this->postRepository->getHotPosts(10);
+        $hot_posts = \PostRepository::getHotPosts(10);
 
         return ViewHelper::frontView('posts.index', compact('posts', 'hot_posts'));
     }
@@ -55,11 +48,11 @@ class PostController extends CommonController
      */
     public function show($post_id)
     {
-        $post = $this->postRepository->find($post_id);
+        $post = \PostRepository::find($post_id);
 
-        $hot_posts = $this->postRepository->getHotPosts(10);
+        $hot_posts = \PostRepository::getHotPosts(10);
 
-        $is_favorite = $this->favoriteRepository->checkIsFavoritePost(Auth::id('user'), $post_id);
+        $is_favorite = \FavoriteRepository::checkIsFavoritePost(Auth::id('user'), $post_id);
 
         return ViewHelper::frontView('posts.show', compact('post', 'is_favorite', 'hot_posts'));
     }
@@ -80,7 +73,7 @@ class PostController extends CommonController
         $input = $request->all();
         $input['user_id'] = Auth::id('user');
 
-        $this->postRepository->createUserPost($input);
+        \PostRepository::createUserPost($input);
 
         return Redirect::route('frontend::user.authprofile');
     }
@@ -93,11 +86,11 @@ class PostController extends CommonController
      */
     public function destroy($post_id)
     {
-        $post = $this->postRepository->find($post_id);
+        $post =\PostRepository::find($post_id);
 
         $this->authorize('destroy', $post);
 
-        $this->postRepository->deleteUserPost($post_id);
+        \PostRepository::deleteUserPost($post_id);
 
         return Redirect::route('frontend::user.posts', ['user_id' => Auth::id('user')]);
     }
@@ -110,7 +103,7 @@ class PostController extends CommonController
      */
     public function getUpvotePost($post_id)
     {
-        $this->postRepository->upvoteModel($post_id);
+        \PostRepository::upvoteModel($post_id);
 
         return Redirect::back();
     }
@@ -123,7 +116,7 @@ class PostController extends CommonController
      */
     public function getDownvotePost($post_id)
     {
-        $this->postRepository->downvoteModel($post_id);
+        \PostRepository::downvoteModel($post_id);
 
         return Redirect::back();
     }

@@ -6,19 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Redirect;
-use StartupsCampfire\Repositories\ProfileRepository;
 use StartupsCampfire\Helpers\ViewHelper;
 
 class ProfileController extends CommonController
 {
-    protected $profileRepository;
-
-    public function __construct(ProfileRepository $profileRepository)
+    public function __construct()
     {
         // 中间件设置
         $this->middleware('auth', ['only' => ['edit', 'update', 'show']]);
-
-        $this->profileRepository = $profileRepository;
     }
 
     public function show($user_id = null)
@@ -26,7 +21,7 @@ class ProfileController extends CommonController
         if (empty($user_id)) {
             $user_id = Auth::id('user');
         }
-        $profile = $this->profileRepository->getUserProfile($user_id);
+        $profile = \ProfileRepository::getUserProfile($user_id);
         $user = $profile->user;
         $record_limit = 20; //显示记录条数上限 达到上限显示“更多”按钮
         $posts = $user->posts()->orderBy('created_at', 'desc')->take($record_limit)->get();
@@ -49,7 +44,7 @@ class ProfileController extends CommonController
     public function edit()
     {
         $user_id = Auth::id('user');
-        $profile = $this->profileRepository->getUserProfile($user_id);
+        $profile = \ProfileRepository::getUserProfile($user_id);
         $user = $profile->user;
 
         return ViewHelper::frontView('profiles.edit', compact('profile', 'user'));
@@ -58,7 +53,8 @@ class ProfileController extends CommonController
     public function update(Request $request)
     {
         $user_id = Auth::id('user');
-        $this->profileRepository->updateUserProfile($user_id, $request);
+        $data = $request->all();
+        \ProfileRepository::updateUserProfile($user_id, $data);
 
         return Redirect::route('frontend::user.authprofile');;
     }

@@ -52,7 +52,7 @@ class Event extends AbstractModel
         if ($this->attributes['user_id'] == 0) {
             return '平台发布';
         } else {
-            return $this->user->name;
+            return $this->user ? $this->user->name : '';
         }
     }
 

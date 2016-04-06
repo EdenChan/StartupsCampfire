@@ -22,6 +22,7 @@ class CreatePostRequest extends Request
     public function rules()
     {
         return [
+            'title'       => 'required',
             'content'     => 'required',
             'category_id' => 'required',
         ];
@@ -30,6 +31,7 @@ class CreatePostRequest extends Request
     public function messages()
     {
         return [
+            'title.required'       => '标题不能为空',
             'content.required'     => '内容不能为空',
             'category_id.required' => '必须选择动态所属分类',
         ];

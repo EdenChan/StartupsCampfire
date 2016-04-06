@@ -62,9 +62,9 @@
                             <span class="fa fa-thumbs-o-up"> {{ $event->vote_count }}</span>
                         </a>| 发起人
                         @if($event->user_id == 0)
-                            {{ $event->event_user_name }}
+                            {{ $event->event_user_name ?  $event->event_user_name : ''}}
                         @else
-                            <a href="{{ route('frontend::user.profile', ['user_id' => $event->user->id]) }}">{{ $event->event_user_name }}</a>
+                            <a href="{{ route('frontend::user.profile', ['user_id' => $event->user ? $event->user->id : '']) }}">{{ $event->event_user_name ? $event->event_user_name : '' }}</a>
                         @endif
                     </p>
                     <p>
@@ -84,7 +84,7 @@
         <div class="media col-sm-6 hot-posts-box">
             <div class="pull-left">
                 <a href="{{ route('frontend::user.profile', ['user_id' => $post->user->id]) }}">
-                    <img src="{{ $post->user->profile->avatar_full_path }}" class="img-circle" height="60" width="60">
+                    <img src="{{ $post->user ? $post->user->profile->avatar_full_path : '' }}" class="img-circle" height="60" width="60">
                 </a>
             </div>
             <div class="media-heading">
@@ -95,12 +95,12 @@
                     <span class="fa fa-thumbs-o-up"> {{ $post->vote_count }}</span>
                 </a>
                 <span> • </span>作者
-                <a href="{{ route('frontend::user.profile', ['user_id' => $post->user->id]) }}">
+                <a href="{{ route('frontend::user.profile', ['user_id' => $post->user ?  $post->user->id : '']) }}">
                     {{ $post->user->name }}
                 </a>
                 <span> •  </span>分类
-                <a href="{{ route('frontend::categories.show', ['url_tag' => $post->category->url_tag]) }}">
-                   {{ $post->category->content }}
+                <a href="{{ route('frontend::categories.show', ['url_tag' => $post->category ? $post->category->url_tag : '']) }}">
+                   {{ $post->category ? $post->category->content : ''}}
                 </a>
                 <span> • </span>
                 <span class="timeago">{{ $post->created_at->diffForHumans() }}</span>
@@ -117,10 +117,10 @@
     <div class="well">
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                <p>基于Laravel5.1搭建的创业者社区应用Demo，定位于为Laravel初学者提供一些使用框架的思路，Github地址：<a href="https://github.com/EdenChan/StartupsCampfire">https://github.com/EdenChan/StartupsCampfire</a></p>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                <a class="btn btn-lg btn-default btn-block" href="https://github.com/EdenChan/StartupsCampfire" target="_blank"><i class="fa fa-github"></i> Check Github</a>
             </div>
         </div>
     </div>

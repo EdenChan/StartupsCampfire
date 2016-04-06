@@ -3,7 +3,6 @@
 namespace StartupsCampfire\Composers;
 
 use Illuminate\Contracts\View\View;
-use StartupsCampfire\Repositories\NoticeRepository;
 
 /**
  * 站点公告视图组件
@@ -13,13 +12,6 @@ use StartupsCampfire\Repositories\NoticeRepository;
  */
 class NoticesComposer
 {
-    protected $noticeRepository;
-
-    public function __construct(NoticeRepository $noticeRepository)
-    {
-        $this->noticeRepository = $noticeRepository;
-    }
-
     /**
      * Bind data to the view.
      *
@@ -28,7 +20,7 @@ class NoticesComposer
      */
     public function compose(View $view)
     {
-        $online_notices = $this->noticeRepository->getOnlineNotices();
+        $online_notices = \NoticeRepository::getOnlineNotices();
         $view->with('online_notices', $online_notices);
     }
 }

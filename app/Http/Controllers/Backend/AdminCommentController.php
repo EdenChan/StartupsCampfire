@@ -5,22 +5,12 @@ namespace StartupsCampfire\Http\Controllers\Backend;
 use Illuminate\Support\Facades\Redirect;
 use StartupsCampfire\Http\Requests;
 use StartupsCampfire\Helpers\ViewHelper;
-use StartupsCampfire\Repositories\CommentRepository;
 
 class AdminCommentController extends AdminCommonController
 {
-    protected $commentRepository;
-
-    public function __construct(CommentRepository $commentRepository)
-    {
-        parent::__construct();
-
-        $this->commentRepository = $commentRepository;
-    }
-
     public function index()
     {
-        $comments = $this->commentRepository->getPaginatedModels(15);
+        $comments = \CommentRepository::getPaginatedModels(15);
 
         $comments_count = $this->commentRepository->all()->count();
 
@@ -29,7 +19,7 @@ class AdminCommentController extends AdminCommonController
 
     public function destroy($comment_id)
     {
-        $this->commentRepository->delete($comment_id);
+        \CommentRepository::delete($comment_id);
 
         return Redirect::route('backend::admin.comments.index');
     }

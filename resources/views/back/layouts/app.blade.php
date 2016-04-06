@@ -55,5 +55,6 @@
             <p>Edited by <a href="https://github.com/EdenChan" target="_blank" class="">EdenChan</a></p>
         </div>
     </footer>
+@yield('extra_scripts')
 </body>
 </html>

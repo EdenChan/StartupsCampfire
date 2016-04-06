@@ -108,6 +108,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'backend::'
     Route::resource('/notices', 'AdminNoticeController');
 
     // 用户管理
+    Route::post('/users/send_email', ['as' => 'admin.users.send_email', 'uses' => 'AdminUserController@sendEmailToUsers']);
     Route::resource('/users', 'AdminUserController');
 
     // 站点幻灯片管理

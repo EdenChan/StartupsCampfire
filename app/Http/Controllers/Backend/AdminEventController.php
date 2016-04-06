@@ -5,32 +5,22 @@ namespace StartupsCampfire\Http\Controllers\Backend;
 use Illuminate\Support\Facades\Redirect;
 use StartupsCampfire\Http\Requests;
 use StartupsCampfire\Helpers\ViewHelper;
-use StartupsCampfire\Repositories\EventRepository;
 use StartupsCampfire\Http\Requests\CreateEventRequest;
 
 class AdminEventController extends AdminCommonController
 {
-    protected $eventRepository;
-
-    public function __construct(EventRepository $eventRepository)
-    {
-        parent::__construct();
-
-        $this->eventRepository = $eventRepository;
-    }
-
     public function index()
     {
-        $events = $this->eventRepository->getPaginatedModels(15);
+        $events = \EventRepository::getPaginatedModels(15);
 
-        $events_count = $this->eventRepository->all()->count();
+        $events_count = \EventRepository::all()->count();
 
         return ViewHelper::backView('events.index', compact('events', 'events_count'));
     }
 
     public function show($event_id)
     {
-        $event = $this->eventRepository->find($event_id);
+        $event = \EventRepository::find($event_id);
 
         return ViewHelper::backView('events.show', compact('event'));
     }
@@ -48,35 +38,35 @@ class AdminEventController extends AdminCommonController
         // 平台活动默认已通过审核
         $input['is_passed'] = 1;
 
-        $this->eventRepository->createUserEvent($input);
+        \EventRepository::createUserEvent($input);
 
         return Redirect::route('backend::admin.events.index');
     }
 
     public function edit($event_id)
     {
-        $event = $this->eventRepository->find($event_id);
+        $event = \EventRepository::find($event_id);
 
         return ViewHelper::backView('events.edit', compact('event'));
     }
 
     public function update($event_id, CreateEventRequest $request)
     {
-        $this->eventRepository->updateEvent($event_id, $request->all());
+        \EventRepository::updateEvent($event_id, $request->all());
 
         return Redirect::back();
     }
 
     public function destroy($event_id)
     {
-        $this->eventRepository->deleteUserEvent($event_id);
+        \EventRepository::deleteUserEvent($event_id);
 
         return Redirect::route('backend::admin.events.index');
     }
 
     public function getChangeEventState($event_id, $to_state)
     {
-        $event = $this->eventRepository->find($event_id);
+        $event = \EventRepository::find($event_id);
 
         $event->update(['is_passed' => $to_state]);
 

@@ -4,40 +4,33 @@ namespace StartupsCampfire\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use StartupsCampfire\Repositories\NotificationRepository;
 
 class NotificationManager
 {
-    protected $notificationRepository;
-
-    public function __construct(NotificationRepository $notificationRepository)
-    {
-        $this->notificationRepository = $notificationRepository;
-    }
 
     public function onCreateComment($event)
     {
-        $this->notificationRepository->createCommentNotification($event);
+        \NotificationRepository::createCommentNotification($event);
     }
 
     public function onMentionUsers($event)
     {
-        $this->notificationRepository->createMentionNotification($event);
+        \NotificationRepository::createMentionNotification($event);
     }
 
     public function onFollowUser($event)
     {
-        $this->notificationRepository->createFollowNotification($event);
+        \NotificationRepository::createFollowNotification($event);
     }
 
     public function onUnfollowUser($event)
     {
-        $this->notificationRepository->deleteFollowNotification($event);
+        \NotificationRepository::deleteFollowNotification($event);
     }
 
     public function onRemoveFollower($event)
     {
-        $this->notificationRepository->removeFollowerNotification($event);
+        \NotificationRepository::removeFollowerNotification($event);
     }
 
     /**

@@ -4,24 +4,19 @@ namespace StartupsCampfire\Http\Controllers\Frontend;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use StartupsCampfire\Http\Requests;
-use StartupsCampfire\Repositories\CommentRepository;
 use StartupsCampfire\Http\Requests\CreateCommentRequest;
 
 class CommentController extends CommonController
 {
-    protected $commentRepository;
-
     /**
      * CommentController constructor.
      *
      * @param PostRepository $postRepository
      */
-    public function __construct(CommentRepository $commentRepository)
+    public function __construct()
     {
         // 中间件设置
         $this->middleware('auth');
-
-        $this->commentRepository = $commentRepository;
     }
 
     public function store(CreateCommentRequest $request)
@@ -29,7 +24,7 @@ class CommentController extends CommonController
         $input = $request->all();
         $input['user_id'] = Auth::id('user');
 
-        $this->commentRepository->createComment($input);
+        \CommentRepository::createComment($input);
 
         return Redirect::back();
     }
@@ -42,7 +37,7 @@ class CommentController extends CommonController
      */
     public function destroy($comment_id)
     {
-        $this->commentRepository->deleteComment($comment_id);
+        \CommentRepository::deleteComment($comment_id);
 
         return Redirect::back();
     }
@@ -55,7 +50,7 @@ class CommentController extends CommonController
      */
     public function getUpvoteComment($comment_id)
     {
-        $this->commentRepository->upvoteModel($comment_id);
+        \CommentRepository::upvoteModel($comment_id);
 
         return Redirect::back();
     }
@@ -68,7 +63,7 @@ class CommentController extends CommonController
      */
     public function getDownvoteComment($comment_id)
     {
-        $this->commentRepository->downvoteModel($comment_id);
+        \CommentRepository::downvoteModel($comment_id);
 
         return Redirect::back();
     }

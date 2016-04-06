@@ -4,6 +4,7 @@ namespace StartupsCampfire\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use StartupsCampfire\Repositories\Eloquent\NavigationRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
             return preg_replace('/\@define(.+)/', '<?php ${1}; ?>', $value);
         });
 
-        $navigation_tree = app('StartupsCampfire\Repositories\NavigationRepository')->getNodesTree('navigation_tree');
+        $navigation_tree = app(NavigationRepository::class)->getNodesTree('navigation_tree');
         view()->share('navigation_tree', $navigation_tree);
     }
 

@@ -16,7 +16,7 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if (is_null(Auth::user('user'))) {
+        if (is_null(Auth::user('user')) && is_null(Auth::user('admin'))) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
