@@ -12,7 +12,7 @@ class AdminCommentController extends AdminCommonController
     {
         $comments = \CommentRepository::getPaginatedModels(15);
 
-        $comments_count = $this->commentRepository->all()->count();
+        $comments_count = \CommentRepository::all()->count();
 
         return ViewHelper::backView('comments.index', compact('comments', 'comments_count'));
     }
