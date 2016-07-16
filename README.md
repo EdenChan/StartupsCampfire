@@ -96,9 +96,9 @@ php artisan serve
 ### 页面预览
 
 #### 前台
-访问 http://115.28.40.237/
+访问 http://localhost:8000
 ```
-体验用户 账号eden 密码123456 请尽量不要更改线上数据哈
+体验用户 账号eden 密码123456
 ```
 
 目前项目暂时部署在阿里云上
@@ -112,7 +112,7 @@ php artisan serve
 
 ![](http://7xrmnk.com1.z0.glb.clouddn.com/00aebb4f31f48e43.png)
 #### 后台
-访问 http://115.28.40.237/admin
+访问 http://localhost:8000/admin
 ```
 初始管理员 账号admin 密码123456 请尽量不要更改线上数据哈
 ```
@@ -167,8 +167,4 @@ https://github.com/stevenyangecho/laravel-u-editor/issues/6)
 
 和之前接触的一些框架（tp、ci等等）相比，laravel无疑在构建一个更规范的工作流方面做得更加出色，composer支持、好用的Eloquent ORM、好用的Blade模板、好用的Restful路由、方便的Form Request..这些都能减少开发过程中的很多思考时间，使开发者更专注于项目功能的实现。
 
-当然由于我自己的各种经验欠缺问题（今年应届），在这个项目许多实现上还是非常simple和naive的，接下来的时间还是需要更多的思考如何能够更好地解决部件解耦、减少重复和提高代码质量等问题，希望能够和大家交流，向大家好好学习:)
-
-###联系作者
-
-Email:2301016897@qq.com
+当然由于我自己的各种经验欠缺问题，在这个项目许多实现上还是非常simple和naive的，接下来的时间还是需要更多的思考如何能够更好地解决部件解耦、减少重复和提高代码质量等问题，希望能够和大家交流，向大家好好学习:)
