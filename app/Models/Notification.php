@@ -32,6 +32,9 @@ class Notification extends AbstractModel
         $notification_type = $this->attributes['type'];
         $notification_body = $this->attributes['body'];
         $notification_from_user = User::find($this->attributes['from_user_id']);
+        if(!$notification_from_user) {
+            return "该用户已被删除";
+        }
         if(!empty($this->notifiable_type)) {
             $notification_model = $this->notifiable;
         }
