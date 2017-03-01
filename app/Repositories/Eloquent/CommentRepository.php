@@ -66,7 +66,9 @@ class CommentRepository extends AbstractRepository implements CommentRepositoryI
     {
         $comment = $this->model->find($comment_id);
 
-        $this->authorize('destroyComment', $comment);
+        if (\Gate::denies('destroy', $comment)) {
+            abort(403);
+        }
 
         $comment->delete($comment_id);
 
