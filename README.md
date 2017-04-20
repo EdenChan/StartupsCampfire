@@ -162,7 +162,7 @@ https://github.com/stevenyangecho/laravel-u-editor
 如果遇到无法上传图片的问题可以参考这个issue:
 https://github.com/stevenyangecho/laravel-u-editor/issues/6)
 
-###一些题外话
+### 一些题外话
 很早之前就听说了Laravel的大名，最近有空的时候学习了一下这个框架的一些基本用法，利用空余时间断断续续地做了一个月多点的时间，基本把这个项目做成了现在这个样子，主要定位于给Laravel的初学者提供一些使用框架的思路。
 
 和之前接触的一些框架（tp、ci等等）相比，laravel无疑在构建一个更规范的工作流方面做得更加出色，composer支持、好用的Eloquent ORM、好用的Blade模板、好用的Restful路由、方便的Form Request..这些都能减少开发过程中的很多思考时间，使开发者更专注于项目功能的实现。
